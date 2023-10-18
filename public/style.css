@@ -1,0 +1,231 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
+}
+
+button:hover {
+  background-color: rgb(217, 234, 255);
+}
+
+button:active {
+  background-color: rgb(173, 209, 252);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(236, 241, 245);
+  padding-top: 60px;
+  font-size: 1.5em;
+}
+
+div#exchangeRate {
+  display: flex;
+  justify-content: center;
+  border: 1px solid red;
+  padding: 15px 0;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  border: 1px solid rgb(13, 255, 0);
+  margin: 30px 0;
+}
+
+nav > button {
+  padding: 10px 70px;
+  border: none;
+  font-size: 20px;
+}
+
+div#content {
+  display: none;
+  /*display: grid;*/
+  grid-template-columns: 30% 70%;
+  border: 1px solid rgb(0, 110, 255);
+  height: calc(100vh - 227px);
+  padding: 10px;
+}
+
+aside#info {
+  border: 1px solid blueviolet;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+aside#info > #hello {
+  margin-top: 40px;
+}
+
+div#accountsAndButton {
+  width: 90%;
+}
+
+#accounts > .account {
+  border: 1px solid;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 5px;
+}
+
+#accountsAndButton > button {
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+#accountsAndButton > #addAccount > span {
+  background-color: greenyellow;
+  border-radius: 50%;
+  padding: 3px 5px;
+}
+
+section#fastOperations {
+  display: grid;
+  grid-template-rows: 50% 50%;
+  justify-content: center;
+}
+
+section#fastOperations > div#lastOperations {
+  width: 90%;
+  height: 90%;
+  background-color: blue;
+}
+
+section#fastOperations > div#buttonsFastOperations {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  height: 40%;
+}
+
+section#fastOperations > div#buttonsFastOperations > button {
+  border-radius: 5px;
+  width: 20%;
+  height: 80px;
+  font-size: 20px;
+  display: inline;
+  margin-top: 40px;
+  margin: 20px;
+}
+
+div#wrapOperations {
+  display: none;
+  /*display: flex;*/
+  justify-content: center;
+  height: calc(100vh - 227px);
+}
+
+div#operations {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid rgb(255, 0, 200);
+  height: 70%;
+  height: fit-content;
+  min-height: 60%;
+  padding: 10px;
+  width: 60%;
+}
+
+div.operation {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid red;
+  margin: 15px;
+  padding: 5px;
+}
+
+div.operation > span {
+  width: 25%;
+  text-align: center;
+}
+
+div#displayOperations > h4 {
+  text-align: center;
+}
+
+section#wrapPayments {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  border: 1px solid rgb(0, 110, 255);
+  height: calc(100vh - 227px);
+  padding: 10px;
+}
+
+aside#paymentsMenu {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid green;
+  padding: 10px;
+}
+
+div#transferBytelephone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+div#transfers {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  border: 1px solid red;
+}
+
+aside#wrapPayments {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid green;
+}
+
+div#transferBytelephone > h5 {
+  align-self: flex-start;
+}
+
+input#numberOfTelephone {
+  width: 80%;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 5px;
+  margin: 15px;
+}
+
+div#payments {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  border: 1px solid red;
+}
+
+.asideBlock button {
+  padding: 30px;
+  font-size: 20px;
+}
+
+section#wrapPayments h5 {
+  margin: 10px;
+}
+
+div.wrapperPayment {
+  padding: 20px;
+  border: 1px solid purple;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+form#transferMoney {
+  display: flex;
+  flex-direction: column;
+}
+
+form#transferMoney select,
+form#transferMoney input {
+  padding: 10px;
+  margin: 10px 0;
+}

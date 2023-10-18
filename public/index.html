@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik&display=swap"
+      rel="stylesheet"
+    />
+    <title>Private Bank</title>
+  </head>
+  <body>
+    <main>
+      <div id="exchangeRate">Current exchange rate money</div>
+      <nav>
+        <button id="mainBtn">Main</button>
+        <button id="operBtn">Operation</button>
+        <button id="paymentBtn">Payments</button>
+      </nav>
+      <div id="content">
+        <aside id="info">
+          <div id="hello">Hello, name</div>
+          <div id="accountsAndButton">
+            <div id="accounts">
+              <div class="account">USD</div>
+              <div class="account">EUR</div>
+              <div class="account">ILS</div>
+            </div>
+            <button id="addAccount"><span id="plus">+</span>Add account</button>
+          </div>
+        </aside>
+        <section id="fastOperations">
+          <div id="lastOperations">Последние операции</div>
+          <div id="buttonsFastOperations">
+            <button id="transferByPhone">Transfer money by phone number</button>
+            <button id="payByQR">Payment by QR-code</button>
+            <button id="currenciesChange">Exchange money</button>
+          </div>
+        </section>
+      </div>
+      <div id="wrapOperations">
+        <div id="operations">
+          <div id="displayOperations">
+            <h4>List of operations</h4>
+            <div class="operation">
+              <span class="date">01/10/2023</span>
+              <span class="amount">$1000</span>
+              <span class="description">Blowjob</span>
+            </div>
+            <div class="operation">
+              <span class="date">01/10/2023</span>
+              <span class="amount">$2000</span>
+              <span class="description">Anal</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section id="wrapPayments">
+        <aside id="paymentsMenu">
+          <div class="asideBlock">
+            <div id="transferBytelephone">
+              <h5>Transfer by phone</h5>
+              <input
+                id="numberOfTelephone"
+                placeholder="Type phone number"
+                type="text"
+              />
+            </div>
+          </div>
+          <div class="asideBlock">
+            <div id="wrapTransfers">
+              <h5>Transfers</h5>
+              <div id="transfers">
+                <button class="element">From another bank</button>
+                <button class="element">By details</button>
+                <button class="element">By card number</button>
+                <button class="element">Between accounts</button>
+                <button class="element">By contract number</button>
+                <button class="element">SWIFT - transaction</button>
+              </div>
+            </div>
+          </div>
+          <div class="asideBlock">
+            <div id="wrapPayments">
+              <h5>Payments</h5>
+              <div id="payments">
+                <button class="element">Mobile connection</button>
+                <button class="element">Government services</button>
+                <button class="element">Internet</button>
+                <button class="element">Public utilities</button>
+                <button class="element">Loan repayment</button>
+                <button class="element">Education</button>
+              </div>
+            </div>
+          </div>
+        </aside>
+        <section id="payment">
+          <div class="wrapperPayment">
+            <div id="betweenAccounts">
+                <h5>Between accounts</h5>
+                <form id="transferMoney">
+                  <label for="accountFrom">Where is the money debited from?</label>
+                  <select id="From">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                  </select>
+                  <label for="accountTo">Where is the money deposited?</label>
+                  <select id="To">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                  </select>
+                  <label for="amountMoney">Enter amount money:</label>
+                  <input placeholder="Type amount of money" name="amountMoney"/>
+                </form>
+          </div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
