@@ -1,6 +1,6 @@
 const { db } = require("../config/db.js");
 const getUser = (username) => {
-  return db("users").select("id", "username").where({ username });
+  return db("users").select("id", "username", "password").where({ username });
 };
 
 const addUser = (username, password) => {
