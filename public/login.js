@@ -10,7 +10,7 @@ async function login(event) {
     password: inputPassword.value,
   };
 
-  const response = await fetch("/bank/auth/login", {
+  const response = await fetch("http://localhost:3000/bank/auth/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
