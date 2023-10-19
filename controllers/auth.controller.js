@@ -3,7 +3,7 @@ const { getUser, addUser } = require("../models/auth.model.js");
 
 const register = async (req, res) => {
   const { username, password } = req.body;
-  
+
   const responds = await getUser(username);
   if (responds.length > 0)
     return res.status(409).json({ error: "Username already exists" });
@@ -17,14 +17,20 @@ const register = async (req, res) => {
       username,
       password: hash,
     };
-    const resp = await addUser(newUser.username, newUser.password);
-    res.status(200).json(resp);
+
+    if (hash) {
+      const resp = await addUser(newUser.username, newUser.password);
+      console.log(resp);
+      res.send({ message: `Successfully registered!`, id: resp[0].id });
+    } else {
+      res.status(404).json({ error: "Username already exists" });
+    }
   });
 };
 
 const login = async (req, res) => {
   const { username, password } = req.body;
-  
+
   const responds = await getUser(username);
   if (responds.length == 0)
     return res.status(404).json({ error: "User not found" });
@@ -34,7 +40,7 @@ const login = async (req, res) => {
     if (err) return res.status(500).json({ error: "Something went wrong" });
 
     if (result) {
-      res.send({ message: `Hi ${username}, welcome back again!` });
+      res.send({ message: `Hi ${username}, welcome back again!`, id: user.id });
     } else {
       res.status(404).json({ error: "Invalid credentials" });
     }

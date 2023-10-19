@@ -1,8 +1,9 @@
 const express = require("express");
-const cors = require('cors');
+const cors = require("cors");
 const router = require("./routers/auth.route.js");
 const app = express();
 
+app.use(express.static("public"));
 app.use(express.json());
 app.use(cors());
 app.use("/bank/auth", router);
