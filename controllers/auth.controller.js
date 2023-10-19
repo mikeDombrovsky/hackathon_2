@@ -3,7 +3,7 @@ const { getUser, addUser } = require("../models/auth.model.js");
 
 const register = async (req, res) => {
   const { username, password } = req.body;
-  console.log(req.body);
+  
   const responds = await getUser(username);
   if (responds.length > 0)
     return res.status(409).json({ error: "Username already exists" });
@@ -11,7 +11,7 @@ const register = async (req, res) => {
   let newUser;
 
   bcrypt.hash(password, 5, async (err, hash) => {
-    if (err) return res.status(500).json({ error: "Something go wrong" });
+    if (err) return res.status(500).json({ error: "Something went wrong" });
 
     newUser = {
       username,
@@ -24,12 +24,11 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
   const { username, password } = req.body;
-  console.log(req.body);
+  
   const responds = await getUser(username);
   if (responds.length == 0)
     return res.status(404).json({ error: "User not found" });
   const user = responds[0];
-  console.log(user);
 
   bcrypt.compare(password, user.password, (err, result) => {
     if (err) return res.status(500).json({ error: "Something went wrong" });

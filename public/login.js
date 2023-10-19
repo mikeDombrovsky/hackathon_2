@@ -17,6 +17,12 @@ async function login(event) {
     },
     body: JSON.stringify(user),
   });
+
   const data = await response.json();
-  alert(data.message);
+  if (response.ok) {
+
+    alert(data.message);
+  } else {
+    alert(data.error);
+  }
 }
