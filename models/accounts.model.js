@@ -13,4 +13,18 @@ const removeAccount = (account_id) => {
     .returning(["account_id", "profile_id", "type", "amount"]);
 };
 
-module.exports = { addAccount, removeAccount };
+const getAccountsByProfileID = (profile_id) => {
+  console.log(profile_id, "profile_id");
+  return db("users")
+    .join("profiles", "users.id", "=", "profiles.profile_id")
+    .join("accounts", "accounts.profile_id", "=", "profiles.profile_id")
+    .select(
+      "accounts.type",
+      "accounts.amount",
+      "accounts.profile_id",
+      "users.id"
+    )
+    .where("accounts.profile_id", profile_id);
+};
+
+module.exports = { addAccount, removeAccount, getAccountsByProfileID };

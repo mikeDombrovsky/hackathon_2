@@ -23,7 +23,9 @@ async function login(event) {
 
   const data = await response.json();
   if (response.ok) {
+    console.log(data);
     localStorage.setItem("id", data.id);
+    localStorage.setItem("username", user.username);
     alert(data.message + localStorage.getItem("id"));
     window.location.replace("./index.html");
   } else {
