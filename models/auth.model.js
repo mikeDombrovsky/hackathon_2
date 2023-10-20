@@ -9,6 +9,7 @@ const addUser = (username, password) => {
     .returning(["id", "username", "password"]);
 };
 
+
 module.exports = {
   getUser,
   addUser,

@@ -1,5 +1,7 @@
 const bcrypt = require("bcrypt");
 const { getUser, addUser } = require("../models/auth.model.js");
+const { addProfile } = require("../models/profiles.model.js");
+const { addAccount } = require("../models/accounts.model.js");
 
 const register = async (req, res) => {
   const { username, password } = req.body;
@@ -20,7 +22,11 @@ const register = async (req, res) => {
 
     if (hash) {
       const resp = await addUser(newUser.username, newUser.password);
+      const resp2 = await addProfile(newUser.username);
+      const resp3 = await addAccount(resp2[0].profile_id, "USD", 0);
       console.log(resp);
+      console.log(resp2);
+      console.log(resp3);
       res.send({ message: `Successfully registered!`, id: resp[0].id });
     } else {
       res.status(404).json({ error: "Username already exists" });
