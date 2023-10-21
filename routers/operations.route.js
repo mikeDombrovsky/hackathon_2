@@ -8,6 +8,6 @@ const {
 
 operationsRouter.post("/add", createOperation);
 
-operationsRouter.get("/all/:profile_id", getAllOperations);
+operationsRouter.post("/all/:profile_id", getAllOperations);
 
 module.exports = { operationsRouter };

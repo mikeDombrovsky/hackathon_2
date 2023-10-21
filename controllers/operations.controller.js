@@ -4,7 +4,8 @@ const {
 } = require("../models/operations.model.js");
 
 const createOperation = async (req, res) => {
-  const { account_id_from, account_id_to, type, amount } = req.body;
+  const { account_id_from, account_id_to, type, amount, username_to } =
+    req.body;
   try {
     const date = new Date().toISOString();
     const addedOperation = await addOperation(
@@ -12,7 +13,8 @@ const createOperation = async (req, res) => {
       account_id_from,
       account_id_to,
       type,
-      amount
+      amount,
+      username_to
     );
     return res.status(200).json({ message: "Operation is created" });
   } catch (err) {
@@ -23,10 +25,10 @@ const createOperation = async (req, res) => {
 
 const getAllOperations = async (req, res) => {
   const { profile_id } = req.params;
-  console.log(req.params, "req params");
-  console.log(profile_id, "profile_id");
+  const { limit } = req.body;
+  console.log(req);
   try {
-    const operationsInfo = await getOperations(profile_id);
+    const operationsInfo = await getOperations(profile_id, limit);
     console.log(operationsInfo);
     return res.status(200).json(operationsInfo);
   } catch (err) {

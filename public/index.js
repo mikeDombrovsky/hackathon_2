@@ -30,6 +30,7 @@ function showMainPage() {
   paymentPage.style.display = "none";
   showHello();
   displayAccountsInfo();
+  displayLastOperations();
 }
 
 async function displayAccountsInfo() {
@@ -52,11 +53,16 @@ async function displayAccountsInfo() {
   }
 }
 
+async function displayLastOperations() {
+  const lastOperations = document.getElementById("lastOperations");
+  showOperations(5, lastOperations);
+}
+
 function showOperationPage() {
   mainPage.style.display = "none";
   operationPage.style.display = "flex";
   paymentPage.style.display = "none";
-  showOperations();
+  showOperationsMain();
 }
 
 function showPaymentPage() {
@@ -90,10 +96,21 @@ async function addNewAccount() {
   displayAccountsInfo();
 }
 
-async function showOperations() {
+async function showOperationsMain() {
   const divDisplayOperations = document.querySelector("div#displayOperations");
+  showOperations(25, divDisplayOperations);
+}
+
+async function showOperations(limit, htmlElement) {
   const response = await fetch(
-    `http://localhost:3000/bank/operations/all/${profile_id}`
+    `http://localhost:3000/bank/operations/all/${profile_id}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ limit }),
+    }
   );
   const data = await response.json();
   const html = data.reduce(
@@ -105,7 +122,7 @@ async function showOperations() {
   </div>`),
     ""
   );
-  divDisplayOperations.innerHTML = html;
+  htmlElement.innerHTML = html;
   console.log(resp);
   console.log(response);
 }

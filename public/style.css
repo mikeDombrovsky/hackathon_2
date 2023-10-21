@@ -100,10 +100,11 @@ section#fastOperations {
   justify-content: center;
 }
 
-section#fastOperations > div#lastOperations {
+section#fastOperations > div#wrapperlastOperations {
   width: 90%;
   height: 90%;
-  background-color: blue;
+  background-color: rgb(236, 241, 245);
+  text-align: center;
 }
 
 section#fastOperations > div#buttonsFastOperations {
