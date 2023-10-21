@@ -14,7 +14,7 @@ if (!profile_id) {
 
 const mainPage = document.querySelector("div#content");
 const operationPage = document.querySelector("div#wrapOperations");
-const paymentPage = document.querySelector("div#wrapPayments");
+const paymentPage = document.querySelector("section#wrapPayments");
 
 mainBtn.addEventListener("click", showMainPage);
 operationBtn.addEventListener("click", showOperationPage);
@@ -56,6 +56,7 @@ function showOperationPage() {
   mainPage.style.display = "none";
   operationPage.style.display = "flex";
   paymentPage.style.display = "none";
+  showOperations();
 }
 
 function showPaymentPage() {
@@ -87,4 +88,24 @@ async function addNewAccount() {
   console.log(resp);
   console.log(response);
   displayAccountsInfo();
+}
+
+async function showOperations() {
+  const divDisplayOperations = document.querySelector("div#displayOperations");
+  const response = await fetch(
+    `http://localhost:3000/bank/operations/all/${profile_id}`
+  );
+  const data = await response.json();
+  const html = data.reduce(
+    (acc, info) =>
+      acc.concat(`<div class="operation">
+    <span class="date">${info.date.slice(0, 10)}</span>
+    <span class="amount">${info.amount} ${info.type}</span>
+    <span class="description">${info.account_id_to}</span>
+  </div>`),
+    ""
+  );
+  divDisplayOperations.innerHTML = html;
+  console.log(resp);
+  console.log(response);
 }
