@@ -39,7 +39,8 @@ const getOperations = (profile_id, limit) => {
       "operations.username_to"
     )
     .where("accounts.profile_id", profile_id)
-    .limit(limit);
+    .limit(limit)
+    .orderBy("operations.date", "desc");
 };
 
 module.exports = { addOperation, getOperations };
