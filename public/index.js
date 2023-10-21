@@ -12,6 +12,11 @@ if (!profile_id) {
   window.location.replace("./login.html");
 }
 
+showCurrenciesRates();
+showHello();
+displayAccountsInfo();
+displayLastOperations();
+
 const mainPage = document.querySelector("div#content");
 const operationPage = document.querySelector("div#wrapOperations");
 const paymentPage = document.querySelector("section#wrapPayments");
@@ -43,15 +48,38 @@ function showCurrenciesRates() {
   }, 60000);
 }
 
-showCurrenciesRates();
-
 function showMainPage() {
   mainPage.style.display = "grid";
   operationPage.style.display = "none";
   paymentPage.style.display = "none";
+
+  mainBtn.classList.add("activeButton");
+  operationBtn.classList.remove("activeButton");
+  paymentBtn.classList.remove("activeButton");
   showHello();
   displayAccountsInfo();
   displayLastOperations();
+}
+
+function showOperationPage() {
+  mainPage.style.display = "none";
+  operationPage.style.display = "flex";
+  paymentPage.style.display = "none";
+
+  operationBtn.classList.add("activeButton");
+  mainBtn.classList.remove("activeButton");
+  paymentBtn.classList.remove("activeButton");
+  showOperationsMain();
+}
+
+function showPaymentPage() {
+  mainPage.style.display = "none";
+  operationPage.style.display = "none";
+  paymentPage.style.display = "grid";
+
+  paymentBtn.classList.add("activeButton");
+  mainBtn.classList.remove("activeButton");
+  operationBtn.classList.remove("activeButton");
 }
 
 async function displayAccountsInfo() {
@@ -79,19 +107,6 @@ async function displayAccountsInfo() {
 async function displayLastOperations() {
   const lastOperations = document.getElementById("lastOperations");
   showOperations(5, lastOperations);
-}
-
-function showOperationPage() {
-  mainPage.style.display = "none";
-  operationPage.style.display = "flex";
-  paymentPage.style.display = "none";
-  showOperationsMain();
-}
-
-function showPaymentPage() {
-  mainPage.style.display = "none";
-  operationPage.style.display = "none";
-  paymentPage.style.display = "grid";
 }
 
 function logOut() {

@@ -5,6 +5,10 @@
   font-family: "Rubik", sans-serif;
 }
 
+.activeButton {
+  background-color: rgb(225, 155, 237);
+}
+
 button:hover {
   background-color: rgb(217, 234, 255);
 }
@@ -59,7 +63,7 @@ nav > button {
 }
 
 div#content {
-  display: none;
+  display: grid;
   /*display: grid;*/
   grid-template-columns: 30% 70%;
   border: 1px solid rgb(0, 110, 255);
@@ -180,7 +184,7 @@ div#displayOperations > h4 {
 }
 
 section#wrapPayments {
-  display: grid;
+  display: none;
   grid-template-columns: 60% 40%;
   border: 1px solid rgb(0, 110, 255);
   height: calc(100vh - 227px);

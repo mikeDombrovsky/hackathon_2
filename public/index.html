@@ -17,9 +17,9 @@
       <div id="wrapperSpinner">
         <div id="spinner"><i class="fa-solid fa-spinner fa-spin fa-2xl" style="color: #84a1db;"></i></div>
       </div>
-      <div id="exchangeRate"></div>
+      <div id="exchangeRate"><span>USD/ILS: 4.06</span> <span>EUR/ILS: 4.29</span></div>
       <nav>
-        <button id="mainBtn">Main</button>
+        <button id="mainBtn" class="activeButton">Main</button>
         <button id="operBtn">Operation</button>
         <button id="paymentBtn">Payments</button>
         <button id="logOut">Log out</button>
@@ -44,7 +44,6 @@
           </div>
         </aside>
         <section id="fastOperations">
-          
           <div id="wrapperlastOperations">
             <h4>Last operations</h4>
             <div id="lastOperations"></div>
@@ -94,7 +93,7 @@
                 <button class="element">From another bank</button>
                 <button class="element">By details</button>
                 <button class="element">By card number</button>
-                <button class="element">Between accounts</button>
+                <button class="element activeButton">Between accounts</button>
                 <button class="element">By contract number</button>
                 <button class="element">SWIFT - transaction</button>
               </div>
