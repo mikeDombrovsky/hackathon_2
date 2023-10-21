@@ -38,7 +38,8 @@ const getOperations = (profile_id, limit) => {
       "operations.amount",
       "operations.username_to"
     )
-    .where("accounts.profile_id", profile_id)
+    .where("operations.account_id_from", profile_id)
+    .orWhere("operations.account_id_to", profile_id)
     .limit(limit)
     .orderBy("operations.date", "desc");
 };

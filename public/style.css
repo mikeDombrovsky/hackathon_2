@@ -28,6 +28,10 @@ div#exchangeRate {
   padding: 15px 0;
 }
 
+div#exchangeRate > span {
+  margin: 0px 10px;
+}
+
 nav {
   display: flex;
   justify-content: center;

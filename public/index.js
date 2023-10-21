@@ -24,6 +24,27 @@ logOutButton.addEventListener("click", logOut);
 
 addAccountButton.addEventListener("click", addNewAccount);
 
+function showCurrenciesRates() {
+  const apiKey = "3a33894bd1da657ce1562949";
+  setInterval(async () => {
+    const responseUSD = await fetch(
+      `https://v6.exchangerate-api.com/v6/${apiKey}/pair/USD/ILS`
+    );
+    const responseEUR = await fetch(
+      `https://v6.exchangerate-api.com/v6/${apiKey}/pair/EUR/ILS`
+    );
+    const dataUSD = await responseUSD.json();
+    const convertRateUSD = dataUSD.conversion_rate.toFixed(2);
+    const dataEUR = await responseEUR.json();
+    const convertRateEUR = dataEUR.conversion_rate.toFixed(2);
+    console.log(convertRateUSD, convertRateEUR);
+    const exchangeRate = document.getElementById("exchangeRate");
+    exchangeRate.innerHTML = `<span>USD/ILS: ${convertRateUSD}</span> <span>EUR/ILS: ${convertRateEUR}</span>`;
+  }, 15000);
+}
+
+showCurrenciesRates();
+
 function showMainPage() {
   mainPage.style.display = "grid";
   operationPage.style.display = "none";
