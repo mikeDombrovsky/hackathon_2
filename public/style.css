@@ -72,6 +72,14 @@ div#accountsAndButton {
   padding: 5px;
 }
 
+div#menuAddAccount > select#currency {
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
 #accountsAndButton > button {
   width: 100%;
   height: 50px;

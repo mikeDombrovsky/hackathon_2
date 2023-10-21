@@ -2,10 +2,13 @@ const mainBtn = document.getElementById("mainBtn");
 const operationBtn = document.getElementById("operBtn");
 const paymentBtn = document.getElementById("paymentBtn");
 const logOutButton = document.getElementById("logOut");
-const id = localStorage.getItem("id");
+const profile_id = localStorage.getItem("id");
 const username = localStorage.getItem("username");
 
-if (!id) {
+//main aside add account button
+const addAccountButton = document.getElementById("addAccount");
+
+if (!profile_id) {
   window.location.replace("./login.html");
 }
 
@@ -19,6 +22,8 @@ paymentBtn.addEventListener("click", showPaymentPage);
 
 logOutButton.addEventListener("click", logOut);
 
+addAccountButton.addEventListener("click", addNewAccount);
+
 function showMainPage() {
   mainPage.style.display = "grid";
   operationPage.style.display = "none";
@@ -28,8 +33,10 @@ function showMainPage() {
 }
 
 async function displayAccountsInfo() {
-  console.log(id);
-  const response = await fetch(`http://localhost:3000/bank/accounts/all/${id}`);
+  console.log(profile_id);
+  const response = await fetch(
+    `http://localhost:3000/bank/accounts/all/${profile_id}`
+  );
 
   const data = await response.json();
   if (response.ok) {
@@ -65,4 +72,19 @@ function logOut() {
 function showHello() {
   const hello = document.getElementById("hello");
   hello.innerHTML = "Hello, " + localStorage.getItem("username");
+}
+
+async function addNewAccount() {
+  const select = document.querySelector("select#currency");
+  const response = await fetch("http://localhost:3000/bank/accounts/add", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ profile_id, type: select.value, amount: 0 }),
+  });
+  const resp = await response.json();
+  console.log(resp);
+  console.log(response);
+  displayAccountsInfo();
 }
