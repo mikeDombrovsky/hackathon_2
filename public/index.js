@@ -40,7 +40,7 @@ function showCurrenciesRates() {
     console.log(convertRateUSD, convertRateEUR);
     const exchangeRate = document.getElementById("exchangeRate");
     exchangeRate.innerHTML = `<span>USD/ILS: ${convertRateUSD}</span> <span>EUR/ILS: ${convertRateEUR}</span>`;
-  }, 15000);
+  }, 60000);
 }
 
 showCurrenciesRates();
@@ -55,6 +55,7 @@ function showMainPage() {
 }
 
 async function displayAccountsInfo() {
+  showSpinner();
   console.log(profile_id);
   const response = await fetch(
     `http://localhost:3000/bank/accounts/all/${profile_id}`
@@ -72,6 +73,7 @@ async function displayAccountsInfo() {
   } else {
     alert(data.error);
   }
+  hideSpinner();
 }
 
 async function displayLastOperations() {
@@ -103,6 +105,7 @@ function showHello() {
 }
 
 async function addNewAccount() {
+  showSpinner();
   const select = document.querySelector("select#currency");
   const response = await fetch("http://localhost:3000/bank/accounts/add", {
     method: "POST",
@@ -115,6 +118,7 @@ async function addNewAccount() {
   console.log(resp);
   console.log(response);
   displayAccountsInfo();
+  hideSpinner();
 }
 
 async function showOperationsMain() {
@@ -123,6 +127,7 @@ async function showOperationsMain() {
 }
 
 async function showOperations(limit, htmlElement) {
+  showSpinner();
   const response = await fetch(
     `http://localhost:3000/bank/operations/all/${profile_id}`,
     {
@@ -134,6 +139,7 @@ async function showOperations(limit, htmlElement) {
     }
   );
   const data = await response.json();
+  hideSpinner();
   const html = data.reduce(
     (acc, info) =>
       acc.concat(`<div class="operation">
@@ -144,6 +150,14 @@ async function showOperations(limit, htmlElement) {
     ""
   );
   htmlElement.innerHTML = html;
-  console.log(resp);
-  console.log(response);
+}
+
+function showSpinner() {
+  const spinner = document.getElementById("wrapperSpinner");
+  spinner.style.display = "flex";
+}
+
+function hideSpinner() {
+  const spinner = document.getElementById("wrapperSpinner");
+  spinner.style.display = "none";
 }

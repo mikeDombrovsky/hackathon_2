@@ -21,6 +21,19 @@ main {
   font-size: 1.5em;
 }
 
+div#wrapperSpinner {
+  height: 100vh;
+  width: 100vw;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  font-size: 80px;
+}
+
 div#exchangeRate {
   display: flex;
   justify-content: center;
