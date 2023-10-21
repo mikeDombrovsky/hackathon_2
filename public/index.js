@@ -101,7 +101,7 @@ async function showOperations() {
       acc.concat(`<div class="operation">
     <span class="date">${info.date.slice(0, 10)}</span>
     <span class="amount">${info.amount} ${info.type}</span>
-    <span class="description">${info.account_id_to}</span>
+    <span class="description">${info.username_to}</span>
   </div>`),
     ""
   );

@@ -28,7 +28,7 @@ const getOperations = (profile_id) => {
       "operations.date",
       "operations.type",
       "operations.amount",
-      "operations.account_id_to"
+      "operations.username_to"
     )
     .where("accounts.profile_id", profile_id);
 };
