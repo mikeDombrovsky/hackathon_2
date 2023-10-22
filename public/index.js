@@ -80,6 +80,7 @@ function showPaymentPage() {
   paymentBtn.classList.add("activeButton");
   mainBtn.classList.remove("activeButton");
   operationBtn.classList.remove("activeButton");
+  showBetweenAccountsPayment();
 }
 
 async function displayAccountsInfo() {
@@ -157,7 +158,7 @@ async function showOperations(limit, htmlElement) {
   hideSpinner();
   const html = data.reduce(
     (acc, info) => {
-      if (info.username_to === username ){
+      if (info.username_to === username) {
         console.log(info);
         return acc.concat(`
           <div class="operation">
@@ -173,9 +174,83 @@ async function showOperations(limit, htmlElement) {
             <span class="description">to ${info.username_to}</span>
           </div>`);
       }
-      
-    },"");
+
+    }, "");
   htmlElement.innerHTML = html;
+}
+
+async function showBetweenAccountsPayment() {
+  showSpinner();
+
+  const response = await fetch(
+    `http://localhost:3000/bank/accounts/all/${profile_id}`
+  );
+
+  const data = await response.json();
+  
+  if (response.ok) {
+    const paymentSection = document.querySelector('section#payment');
+    const options = data.reduce(
+      (acc, info) =>
+        acc.concat(`<option value="${info.account_id}${info.type}">${info.account_id} - ${info.type} - ${info.amount}</option>`),
+      ""
+    );
+    paymentSection.innerHTML = `
+      <div class="wrapperPayment">
+        <div id="betweenAccounts">
+          <h5>Between accounts</h5>
+          <form id="transferMoney" onsubmit="sendBetweenAccounts(event)">
+            <label for="accountFrom">Where is the money debited from?</label>
+            <select id="from">
+              ${options}
+            </select>
+            <label for="accountTo">Where is the money deposited?</label>
+            <select id="to">
+              ${options}
+            </select>
+            <label for="amountMoney">Enter amount money:</label>
+            <input type="number" placeholder="Type amount of money" name="amount" required/>
+            <input type="submit" value="Send">
+          </form>
+        </div>
+      </div>`
+    hideSpinner();
+  } else {
+    alert(data.error);
+  }
+}
+
+async function sendBetweenAccounts(event){
+  showSpinner();
+  event.preventDefault();
+
+  const account_id_from = event.target.from.value.slice(0, 1);
+  const account_id_to = event.target.to.value.slice(0, 1);
+  const type = event.target.from.value.slice(1);
+  const amount = event.target.amount.value;
+
+  console.log(event.target);
+
+  const response2 = await fetch(
+    `http://localhost:3000/bank/operations/add/${profile_id}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ 
+        account_id_from, 
+        account_id_to, 
+        type, 
+        amount, 
+        username_from:username, 
+        username_to:username
+       }),
+    }
+  );
+  const data2 = await response2.json();
+  alert(JSON.stringify(data2))
+  hideSpinner();
 }
 
 function showSpinner() {

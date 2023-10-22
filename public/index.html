@@ -1,143 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Rubik&display=swap"
-      rel="stylesheet"
-    />
-    <title>Private Bank</title>
-  </head>
-  <body>
-    <main>
-      <div id="wrapperSpinner">
-        <div id="spinner"><i class="fa-solid fa-spinner fa-spin fa-2xl" style="color: #84a1db;"></i></div>
-      </div>
-      <div id="exchangeRate"><span>USD/ILS: 4.06</span> <span>EUR/ILS: 4.29</span></div>
-      <nav>
-        <button id="mainBtn" class="activeButton">Main</button>
-        <button id="operBtn">Operation</button>
-        <button id="paymentBtn">Payments</button>
-        <button id="logOut">Log out</button>
-      </nav>
-      <div id="content">
-        <aside id="info">
-          <div id="hello"></div>
-          <div id="accountsAndButton">
-            <div id="accounts">
-              <div class="account">USD</div>
-              <div class="account">EUR</div>
-              <div class="account">ILS</div>
-            </div>
-            <div id="menuAddAccount">
-              <select name="currency" id="currency">
-                <option value="USD">USD</option>
-                <option value="EUR">EUR</option>
-                <option value="ILS">ILS</option>
-              </select>
-            </div>
-            <button id="addAccount"><span id="plus">+</span>Add account</button>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet" />
+  <title>Private Bank</title>
+</head>
+
+<body>
+  <main>
+    <div id="wrapperSpinner">
+      <div id="spinner"><i class="fa-solid fa-spinner fa-spin fa-2xl" style="color: #84a1db;"></i></div>
+    </div>
+    <div id="exchangeRate"><span>USD/ILS: 4.06</span> <span>EUR/ILS: 4.29</span></div>
+    <nav>
+      <button id="mainBtn" class="activeButton">Main</button>
+      <button id="operBtn">Operation</button>
+      <button id="paymentBtn">Payments</button>
+      <button id="logOut">Log out</button>
+    </nav>
+    <div id="content">
+      <aside id="info">
+        <div id="hello"></div>
+        <div id="accountsAndButton">
+          <div id="accounts">
+            <div class="account">USD</div>
+            <div class="account">EUR</div>
+            <div class="account">ILS</div>
           </div>
-        </aside>
-        <section id="fastOperations">
-          <div id="wrapperlastOperations">
-            <h4>Last operations</h4>
-            <div id="lastOperations"></div>
+          <div id="menuAddAccount">
+            <select name="currency" id="currency">
+              <option value="USD">USD</option>
+              <option value="EUR">EUR</option>
+              <option value="ILS">ILS</option>
+            </select>
           </div>
-          <div id="buttonsFastOperations">
-            <button id="transferByPhone">Transfer money by phone number</button>
-            <button id="payByQR">Payment by QR-code</button>
-            <button id="currenciesChange">Exchange money</button>
+          <button id="addAccount"><span id="plus">+</span>Add account</button>
+        </div>
+      </aside>
+      <section id="fastOperations">
+        <div id="wrapperlastOperations">
+          <h4>Last operations</h4>
+          <div id="lastOperations"></div>
+        </div>
+        <div id="buttonsFastOperations">
+          <button id="transferByPhone">Transfer money by phone number</button>
+          <button id="payByQR">Payment by QR-code</button>
+          <button id="currenciesChange">Exchange money</button>
+        </div>
+      </section>
+    </div>
+    <div id="wrapOperations">
+      <div id="operations">
+        <h4>List of operations</h4>
+        <div id="headerOfOperations">
+          <div class="operation">
+            <span>Date</span>
+            <span>Amount</span>
+            <span>Info</span>
           </div>
-        </section>
-      </div>
-      <div id="wrapOperations">
-        <div id="operations">
-          <h4>List of operations</h4>
-          <div id="headerOfOperations">
-            <div class="operation">
-              <span>Date</span>
-              <span>Amount</span>
-              <span>Info</span>
-            </div>
-          </div>
-          <div id="displayOperations">
-            <div class="operation">
-              <span class="date">01/10/2023</span>
-              <span class="amount">$1000</span>
-              <span class="description">Blowjob</span>
-            </div>
+        </div>
+        <div id="displayOperations">
+          <div class="operation">
+            <span class="date">01/10/2023</span>
+            <span class="amount">$1000</span>
+            <span class="description">Blowjob</span>
           </div>
         </div>
       </div>
-      <section id="wrapPayments">
-        <aside id="paymentsMenu">
-          <div class="asideBlock">
-            <div id="transferBytelephone">
-              <h5>Transfer by phone</h5>
-              <input
-                id="numberOfTelephone"
-                placeholder="Type phone number"
-                type="text"
-              />
+    </div>
+    <section id="wrapPayments">
+      <aside id="paymentsMenu">
+        <div class="asideBlock">
+          <div id="transferBytelephone">
+            <h5>Transfer by phone</h5>
+            <input id="numberOfTelephone" placeholder="Type phone number" type="text" />
+          </div>
+        </div>
+        <div class="asideBlock">
+          <div id="wrapTransfers">
+            <h5>Transfers</h5>
+            <div id="transfers">
+              <button class="element">From another bank</button>
+              <button class="element">By details</button>
+              <button class="element">By card number</button>
+              <button class="element activeButton">Between accounts</button>
+              <button class="element">By contract number</button>
+              <button class="element">SWIFT - transaction</button>
             </div>
           </div>
-          <div class="asideBlock">
-            <div id="wrapTransfers">
-              <h5>Transfers</h5>
-              <div id="transfers">
-                <button class="element">From another bank</button>
-                <button class="element">By details</button>
-                <button class="element">By card number</button>
-                <button class="element activeButton">Between accounts</button>
-                <button class="element">By contract number</button>
-                <button class="element">SWIFT - transaction</button>
-              </div>
+        </div>
+        <div class="asideBlock">
+          <div id="wrapPayments">
+            <h5>Payments</h5>
+            <div id="payments">
+              <button class="element">Mobile connection</button>
+              <button class="element">Government services</button>
+              <button class="element">Internet</button>
+              <button class="element">Public utilities</button>
+              <button class="element">Loan repayment</button>
+              <button class="element">Education</button>
             </div>
           </div>
-          <div class="asideBlock">
-            <div id="wrapPayments">
-              <h5>Payments</h5>
-              <div id="payments">
-                <button class="element">Mobile connection</button>
-                <button class="element">Government services</button>
-                <button class="element">Internet</button>
-                <button class="element">Public utilities</button>
-                <button class="element">Loan repayment</button>
-                <button class="element">Education</button>
-              </div>
-            </div>
+        </div>
+      </aside>
+      <section id="payment">
+        <div class="wrapperPayment">
+          <div id="betweenAccounts">
+            <h5>Between accounts</h5>
+            <form id="transferMoney" onsubmit="sendBetweenAccounts(event)">
+              <label for="accountFrom">Where is the money debited from?</label>
+              <select id="from">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+              <label for="accountTo">Where is the money deposited?</label>
+              <select id="to">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+              <label for="amountMoney">Enter amount money:</label>
+              <input placeholder="Type amount of money" name="amountMoney" required/>
+              <input type="submit" id="amount" value="Send">
+            </form>
           </div>
-        </aside>
-        <section id="payment">
-          <div class="wrapperPayment">
-            <div id="betweenAccounts">
-                <h5>Between accounts</h5>
-                <form id="transferMoney">
-                  <label for="accountFrom">Where is the money debited from?</label>
-                  <select id="From">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                  </select>
-                  <label for="accountTo">Where is the money deposited?</label>
-                  <select id="To">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                  </select>
-                  <label for="amountMoney">Enter amount money:</label>
-                  <input placeholder="Type amount of money" name="amountMoney"/>
-                </form>
-          </div>
-        </section>
+        </div>
       </section>
-    </main>
-    <script src="https://kit.fontawesome.com/ff9e72d054.js" crossorigin="anonymous"></script>
-    <script src="index.js"></script>
-  </body>
+    </section>
+  </main>
+  <script src="https://kit.fontawesome.com/ff9e72d054.js" crossorigin="anonymous"></script>
+  <script src="index.js"></script>
+</body>
+
 </html>

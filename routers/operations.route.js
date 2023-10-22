@@ -6,7 +6,7 @@ const {
   getAllOperations,
 } = require("../controllers/operations.controller.js");
 
-operationsRouter.post("/add", createOperation);
+operationsRouter.post("/add/:profile_id", createOperation);
 
 operationsRouter.post("/all/:profile_id", getAllOperations);
 

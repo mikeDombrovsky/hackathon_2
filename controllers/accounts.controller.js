@@ -2,6 +2,7 @@ const {
   addAccount,
   removeAccount,
   getAccountsByProfileID,
+  getAccountByID,
 } = require("../models/accounts.model.js");
 
 const createAccount = async (req, res) => {
@@ -42,4 +43,16 @@ const getAllAccounts = async (req, res) => {
   }
 };
 
-module.exports = { createAccount, deleteAccount, getAllAccounts };
+const getAccountByAccountId = async (req, res) => {
+  const { account_id } = req.params;
+
+  try {
+    const accountInfo = await getAccountByID(account_id);
+    return res.status(200).json(accountInfo);
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ error: "Something went wrong" });
+  }
+};
+
+module.exports = { createAccount, deleteAccount, getAllAccounts, getAccountByAccountId };

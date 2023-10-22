@@ -21,9 +21,29 @@ const getAccountsByProfileID = (profile_id) => {
       "accounts.type",
       "accounts.amount",
       "accounts.profile_id",
-      "users.id"
+      "accounts.account_id",
+      "users.id",
     )
     .where("accounts.profile_id", profile_id);
 };
 
-module.exports = { addAccount, removeAccount, getAccountsByProfileID };
+const getAccountByID = (account_id) => {
+  return db("accounts")
+    .select(
+      "account_id",
+      "profile_id",
+      "type",
+      "amount",
+    )
+    .where("accounts.account_id", account_id);
+};
+
+
+const updateAccountAmount = async (account_id, amount) => {
+  return db("accounts")
+    .update({ amount })
+    .where("account_id", account_id)
+    .returning(["account_id", "profile_id", "type", "amount"]);
+}
+
+module.exports = { addAccount, removeAccount, getAccountsByProfileID, getAccountByID, updateAccountAmount };
