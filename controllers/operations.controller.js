@@ -4,7 +4,7 @@ const {
 } = require("../models/operations.model.js");
 
 const createOperation = async (req, res) => {
-  const { account_id_from, account_id_to, type, amount, username_to } =
+  const { account_id_from, account_id_to, type, amount, username_from, username_to } =
     req.body;
   try {
     const date = new Date().toISOString();

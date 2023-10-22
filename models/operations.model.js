@@ -6,10 +6,11 @@ const addOperation = (
   account_id_to,
   type,
   amount,
+  username_from,
   username_to
 ) => {
   return db("operations")
-    .insert({ date, account_id_from, account_id_to, type, amount, username_to })
+    .insert({ date, account_id_from, account_id_to, type, amount, username_from, username_to })
     .returning([
       "operation_id",
       "date",
@@ -17,6 +18,7 @@ const addOperation = (
       "account_id_to",
       "type",
       "amount",
+      "username_from",
       "username_to",
     ]);
 };
@@ -35,7 +37,8 @@ const getOperations = (profile_id, limit) => {
       "operations.date",
       "operations.type",
       "operations.amount",
-      "operations.username_to"
+      "operations.username_to",
+      "operations.username_from"
     )
     .where("operations.account_id_from", profile_id)
     .orWhere("operations.account_id_to", profile_id)

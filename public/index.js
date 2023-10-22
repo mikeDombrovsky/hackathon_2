@@ -12,7 +12,7 @@ if (!profile_id) {
   window.location.replace("./login.html");
 }
 
-showCurrenciesRates();
+// showCurrenciesRates();
 showHello();
 displayAccountsInfo();
 displayLastOperations();
@@ -156,14 +156,25 @@ async function showOperations(limit, htmlElement) {
   const data = await response.json();
   hideSpinner();
   const html = data.reduce(
-    (acc, info) =>
-      acc.concat(`<div class="operation">
-    <span class="date">${info.date.slice(0, 10)}</span>
-    <span class="amount">${info.amount} ${info.type}</span>
-    <span class="description">${info.username_to}</span>
-  </div>`),
-    ""
-  );
+    (acc, info) => {
+      if (info.username_to === username ){
+        console.log(info);
+        return acc.concat(`
+          <div class="operation">
+            <span class="date">${info.date.slice(0, 10)}</span>
+            <span class="amount" style="color:green">${info.amount} ${info.type}</span>
+            <span class="description">from ${info.username_from}</span>
+          </div>`);
+      } else {
+        return acc.concat(`
+         <div class="operation">
+            <span class="date">${info.date.slice(0, 10)}</span>
+            <span class="amount" style="color:red">${info.amount} ${info.type}</span>
+            <span class="description">to ${info.username_to}</span>
+          </div>`);
+      }
+      
+    },"");
   htmlElement.innerHTML = html;
 }
 
