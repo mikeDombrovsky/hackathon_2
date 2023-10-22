@@ -14,7 +14,6 @@ const removeAccount = (account_id) => {
 };
 
 const getAccountsByProfileID = (profile_id) => {
-  console.log(profile_id, "profile_id");
   return db("users")
     .join("profiles", "users.id", "=", "profiles.profile_id")
     .join("accounts", "accounts.profile_id", "=", "profiles.profile_id")

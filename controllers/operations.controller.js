@@ -26,10 +26,10 @@ const createOperation = async (req, res) => {
 const getAllOperations = async (req, res) => {
   const { profile_id } = req.params;
   const { limit } = req.body;
-  console.log(req);
+
   try {
     const operationsInfo = await getOperations(profile_id, limit);
-    console.log(operationsInfo);
+
     return res.status(200).json(operationsInfo);
   } catch (err) {
     console.log(err);
