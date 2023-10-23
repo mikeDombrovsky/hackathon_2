@@ -12,7 +12,7 @@ if (!profile_id) {
   window.location.replace("./login.html");
 }
 
-// showCurrenciesRates();
+showCurrenciesRates();
 showHello();
 displayAccountsInfo();
 displayLastOperations();
@@ -45,7 +45,7 @@ function showCurrenciesRates() {
     console.log(convertRateUSD, convertRateEUR);
     const exchangeRate = document.getElementById("exchangeRate");
     exchangeRate.innerHTML = `<span>USD/ILS: ${convertRateUSD}</span> <span>EUR/ILS: ${convertRateEUR}</span>`;
-  }, 60000);
+  }, 300000);
 }
 
 function showMainPage() {
