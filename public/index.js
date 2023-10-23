@@ -250,6 +250,7 @@ async function sendBetweenAccounts(event){
   );
   const data2 = await response2.json();
   alert(JSON.stringify(data2))
+  showBetweenAccountsPayment();
   hideSpinner();
 }
 

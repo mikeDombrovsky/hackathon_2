@@ -5,21 +5,20 @@ const {
 const { updateAccountAmount, getAccountByID } = require('../models/accounts.model.js');
 
 const createOperation = async (req, res) => {
-  const param_profile_id = req.params;
+  const profile_id = req.params.profile_id;
   let { account_id_from, account_id_to, type, amount, username_from, username_to } = req.body;
 
   try {
     const account_from = await getAccountByID(account_id_from);
     const account_to = await getAccountByID(account_id_to);
 
-    console.log('operations.controller accounts from/to ', account_from, account_to, req.body);
-
-    // if (profile_id != param_profile_id) {
-    //   return res.status(403).json({ error: 'operation forbidden' });
-    // }
+    if (account_from[0].profile_id != profile_id) {
+      console.log(account_from[0].profile_id, profile_id);
+      return res.status(403).json({ error: 'forbidden' });
+    }
 
     const from_amount = parseFloat(account_from[0].amount);
-    const to_amount = parseFloat(account_from[0].amount);
+    const to_amount = parseFloat(account_to[0].amount);
     amount = parseFloat(amount);
 
     if(from_amount + amount < 0){
@@ -39,6 +38,7 @@ const createOperation = async (req, res) => {
 
     const updatedAmount_from = await updateAccountAmount(account_id_from, from_amount - amount);
     const updatedAmount_to = await updateAccountAmount(account_id_to, to_amount + amount);
+    console.log('updatedAmount_from, updatedAmount_to ',updatedAmount_from, updatedAmount_to);
 
     if (addedOperation.length > 0 && updatedAmount_from.length > 0 && updatedAmount_to.length > 0){
       return res.status(200).json({ message: "Operation is created" });
