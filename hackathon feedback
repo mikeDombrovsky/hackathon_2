@@ -1,0 +1,6 @@
+I want to provide you with feedback on your hackathon project.
+You successfully implemented several key features, including user registration and login functionality with password prompts for incorrect entries,
+user data storage in a database, money management between accounts, and integration with an external API for currency conversion. Additionally,
+it's commendable that you utilized a setup.sql file, organized your code with routers, models, and controllers, and presented an acceptable user interface.
+While your project demonstrates a solid foundation, there's room for improvement.
+I would suggest focusing on enhancing the user interface and adding additional features to make it more comprehensive. Keep up the good work!
