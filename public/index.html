@@ -95,7 +95,7 @@
           </div>
         </div>
         <div class="asideBlock">
-          <div id="wrapPayments">
+          <div class="wrapPayments">
             <h5>Payments</h5>
             <div id="payments">
               <button class="element">Mobile connection</button>
@@ -114,19 +114,19 @@
             <h5>Between accounts</h5>
             <form id="transferMoney" onsubmit="sendBetweenAccounts(event)">
               <label for="accountFrom">Where the money should be debited from?</label>
-              <select id="from">
+              <select id="accountFrom">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
               </select>
-              <label for="accountTo">Where the money should be deposited to?</label>
+              <label for="to">Where the money should be deposited to?</label>
               <select id="to">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
               </select>
               <label for="amountMoney">Enter amount:</label>
-              <input placeholder="Type amount of money" name="amountMoney" required/>
+              <input placeholder="Type amount of money" name="amountMoney" id="amountMoney" required/>
               <input type="submit" id="amount" value="Send">
             </form>
           </div>

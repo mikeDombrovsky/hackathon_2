@@ -201,15 +201,15 @@ async function showBetweenAccountsPayment() {
         <div id="betweenAccounts">
           <h5>Between accounts</h5>
           <form id="transferMoney" onsubmit="sendBetweenAccounts(event)">
-            <label for="accountFrom">Where is the money debited from?</label>
+            <label for="accountFrom">Where it should be debited from?</label>
             <select id="from">
               ${options}
             </select>
-            <label for="accountTo">Where is the money deposited?</label>
+            <label for="accountTo">Where it should be deposited to?</label>
             <select id="to">
               ${options}
             </select>
-            <label for="amount">Enter amount money:</label>
+            <label for="amount">Enter amount:</label>
             <input type="number" placeholder="Type amount of money" name="amount" required/>
             <input type="submit" value="Send">
           </form>
