@@ -13,15 +13,15 @@ const createOperation = async (req, res) => {
     const account_to = await getAccountByID(account_id_to);
 
     if (account_from[0].profile_id != profile_id) {
-      console.log(account_from[0].profile_id, profile_id);
       return res.status(403).json({ error: 'forbidden' });
     }
 
     const from_amount = parseFloat(account_from[0].amount);
     const to_amount = parseFloat(account_to[0].amount);
-    amount = parseFloat(amount);
+   
+    const amount_as_number = parseFloat(amount);
 
-    if(from_amount + amount < 0){
+    if (from_amount + amount_as_number < 0){
       return res.status(409).json({ error: 'wrong params' });
     }
 
@@ -36,8 +36,8 @@ const createOperation = async (req, res) => {
       username_to
     );
 
-    const updatedAmount_from = await updateAccountAmount(account_id_from, from_amount - amount);
-    const updatedAmount_to = await updateAccountAmount(account_id_to, to_amount + amount);
+    const updatedAmount_from = await updateAccountAmount(account_id_from, from_amount - amount_as_number);
+    const updatedAmount_to = await updateAccountAmount(account_id_to, to_amount + amount_as_number);
     console.log('updatedAmount_from, updatedAmount_to ',updatedAmount_from, updatedAmount_to);
 
     if (addedOperation.length > 0 && updatedAmount_from.length > 0 && updatedAmount_to.length > 0){

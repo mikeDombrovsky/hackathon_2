@@ -6,7 +6,7 @@
 }
 
 .activeButton {
-  background-color: rgb(225, 155, 237);
+  background-color: rgb(173, 206, 252);
 }
 
 button:hover {
@@ -41,7 +41,7 @@ div#wrapperSpinner {
 div#exchangeRate {
   display: flex;
   justify-content: center;
-  border: 1px solid red;
+  border-bottom: 1px solid lightgray;
   padding: 15px 0;
 }
 
@@ -52,7 +52,7 @@ div#exchangeRate > span {
 nav {
   display: flex;
   justify-content: center;
-  border: 1px solid rgb(13, 255, 0);
+  /*border: 1px solid rgb(173, 206, 252);*/
   margin: 30px 0;
 }
 
@@ -66,13 +66,13 @@ div#content {
   display: grid;
   /*display: grid;*/
   grid-template-columns: 30% 70%;
-  border: 1px solid rgb(0, 110, 255);
+  border-top: 1px solid lightgray;
   height: calc(100vh - 227px);
   padding: 10px;
 }
 
 aside#info {
-  border: 1px solid blueviolet;
+  border-right: 1px solid lightgray;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -155,7 +155,7 @@ div#wrapOperations {
 div#operations {
   display: flex;
   flex-direction: column;
-  border: 2px solid rgb(255, 0, 200);
+  border: 2px solid lightgray;
   height: 70%;
   height: fit-content;
   min-height: 60%;
@@ -169,7 +169,9 @@ div#operations {
 div.operation {
   display: flex;
   justify-content: space-between;
-  border: 1px solid red;
+  border-bottom: 1px solid lightgray;
+  /*border-right: 1px solid lightgray;*/
+  /*border-left: 1px solid lightgray;*/
   margin: 15px;
   padding: 5px;
 }
@@ -186,7 +188,7 @@ div#displayOperations > h4 {
 section#wrapPayments {
   display: none;
   grid-template-columns: 60% 40%;
-  border: 1px solid rgb(0, 110, 255);
+  /*border: 1px solid rgb(0, 110, 255);*/
   height: calc(100vh - 227px);
   padding: 10px;
 }
@@ -194,7 +196,7 @@ section#wrapPayments {
 aside#paymentsMenu {
   display: flex;
   flex-direction: column;
-  border: 1px solid green;
+  border: 1px solid lightgray;
   padding: 10px;
 }
 
@@ -207,13 +209,13 @@ div#transferBytelephone {
 div#transfers {
   display: grid;
   grid-template-columns: 50% 50%;
-  border: 1px solid red;
+  border: 1px solid lightgray;
 }
 
 aside#wrapPayments {
   display: flex;
   flex-direction: column;
-  border: 1px solid green;
+  border: 1px solid lightgray;
 }
 
 div#transferBytelephone > h5 {
@@ -231,7 +233,7 @@ input#numberOfTelephone {
 div#payments {
   display: grid;
   grid-template-columns: 50% 50%;
-  border: 1px solid red;
+  border: 1px solid lightgray;
 }
 
 .asideBlock button {
@@ -245,7 +247,7 @@ section#wrapPayments h5 {
 
 div.wrapperPayment {
   padding: 20px;
-  border: 1px solid purple;
+  border: 1px solid lightgray;
   display: flex;
   align-items: center;
   justify-content: center;

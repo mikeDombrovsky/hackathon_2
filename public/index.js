@@ -85,7 +85,6 @@ function showPaymentPage() {
 
 async function displayAccountsInfo() {
   showSpinner();
-  console.log(profile_id);
   const response = await fetch(
     `http://localhost:3000/bank/accounts/all/${profile_id}`
   );
@@ -112,6 +111,7 @@ async function displayLastOperations() {
 
 function logOut() {
   localStorage.removeItem("id");
+  localStorage.removeItem("username");
   window.location.replace("./login.html");
 }
 
@@ -131,10 +131,12 @@ async function addNewAccount() {
     body: JSON.stringify({ profile_id, type: select.value, amount: 0 }),
   });
   const resp = await response.json();
-  console.log(resp);
-  console.log(response);
-  displayAccountsInfo();
-  hideSpinner();
+  if (resp.ok){
+    displayAccountsInfo();
+  }else{
+    alert(resp.error);
+  }
+    hideSpinner();
 }
 
 async function showOperationsMain() {
@@ -159,7 +161,6 @@ async function showOperations(limit, htmlElement) {
   const html = data.reduce(
     (acc, info) => {
       if (info.username_to === username) {
-        console.log(info);
         return acc.concat(`
           <div class="operation">
             <span class="date">${info.date.slice(0, 10)}</span>
@@ -208,7 +209,7 @@ async function showBetweenAccountsPayment() {
             <select id="to">
               ${options}
             </select>
-            <label for="amountMoney">Enter amount money:</label>
+            <label for="amount">Enter amount money:</label>
             <input type="number" placeholder="Type amount of money" name="amount" required/>
             <input type="submit" value="Send">
           </form>
@@ -228,8 +229,6 @@ async function sendBetweenAccounts(event){
   const account_id_to = event.target.to.value.slice(0, 1);
   const type = event.target.from.value.slice(1);
   const amount = event.target.amount.value;
-
-  console.log(event.target);
 
   const response2 = await fetch(
     `http://localhost:3000/bank/operations/add/${profile_id}`,
